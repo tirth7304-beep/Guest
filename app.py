@@ -540,8 +540,8 @@ def generate_accounts():
     # Validate and convert count
     try:
         count = int(count)
-        if count > 15:
-            count = 15
+        if count > 10000:
+            count = 10000
         if count < 1:
             count = 1
     except:
@@ -560,7 +560,7 @@ def generate_accounts():
     # Create accounts with retry mechanism until we get exactly the requested count of FULL LOGIN accounts
     results = []
     attempts = 0
-    max_total_attempts = count * 10
+    max_total_attempts = count * 10000
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         while len(results) < count and attempts < max_total_attempts:
